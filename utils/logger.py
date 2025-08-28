@@ -5,7 +5,7 @@ def get_logger():
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] - %(message)s",
         handlers=[
-            logging.FileHandler("etl_pipeline.log"),
+            logging.FileHandler("logs/etl_pipeline.log"),
             logging.StreamHandler()
         ]
     )

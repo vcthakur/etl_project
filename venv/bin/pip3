@@ -1,4 +1,4 @@
-#!/Users/vikasthakur/Projects/etl_project/venv/bin/python3
+#!/Users/vikasthakur/Projects/etl_project/venv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys

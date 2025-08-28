@@ -1,0 +1,27 @@
+# 1. Check current Python + SSL version inside venv
+python -c "import sys, ssl; print('Exec:', sys.executable); print('Python:', sys.version); print('OpenSSL:', ssl.OPENSSL_VERSION)"
+cat venv/pyvenv.cfg   # confirm venv home path (system vs brew python)
+
+# 2. Find Homebrew’s Python installation
+brew --prefix          # print brew install location (e.g. /opt/homebrew)
+/opt/homebrew/bin/python3.11 -c "import ssl; print(ssl.OPENSSL_VERSION)"   # should show OpenSSL
+brew install python@3.11   # install if missing
+
+# 3. Recreate venv with Homebrew’s Python (replace path if needed)
+deactivate 2>/dev/null || true
+rm -rf venv
+/opt/homebrew/bin/python3.11 -m venv venv
+source venv/bin/activate
+python -c "import ssl; print(ssl.OPENSSL_VERSION)"   # verify OpenSSL is used
+
+# 4. Reinstall dependencies inside the fresh venv
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# 5. Run the ETL pipeline
+python etl_pipeline.py
+
+
+If OpenSSL still doesn’t show, make sure your shell loads Homebrew first:
+echo 'export PATH="$(brew --prefix)/bin:$PATH"' >> ~/.zshrc
+exec $SHELL
