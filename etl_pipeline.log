@@ -1,0 +1,26 @@
+2025-08-28 12:19:39,068 [INFO] - ETL Pipeline Started
+2025-08-28 12:19:39,068 [INFO] - Reading CSV from data/input.csv
+2025-08-28 12:19:39,069 [ERROR] - Pipeline failed: [Errno 2] No such file or directory: 'data/input.csv'
+Traceback (most recent call last):
+  File "/Users/vikasthakur/Projects/etl_project/etl_pipeline.py", line 22, in run
+    data = extractor.extract()
+  File "/Users/vikasthakur/Projects/etl_project/extractors/csv_extractor.py", line 10, in extract
+    return pd.read_csv(self.file_path)
+  File "/Users/vikasthakur/Projects/retail_shop/venv/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/vikasthakur/Projects/retail_shop/venv/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/vikasthakur/Projects/retail_shop/venv/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/Users/vikasthakur/Projects/retail_shop/venv/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+  File "/Users/vikasthakur/Projects/retail_shop/venv/lib/python3.9/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/input.csv'
+2025-08-28 12:23:45,035 [INFO] - ETL Pipeline Started
+2025-08-28 12:23:45,035 [INFO] - Reading CSV from data/input.csv
+2025-08-28 12:23:45,038 [INFO] - Extracted 6 records
+2025-08-28 12:23:45,038 [INFO] - Applying basic cleaning...
+2025-08-28 12:23:45,040 [INFO] - Transformations applied
+2025-08-28 12:23:45,040 [INFO] - Saving results to data/output.csv
+2025-08-28 12:23:45,040 [INFO] - Data successfully loaded

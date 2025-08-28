@@ -1,0 +1,8 @@
+extract:
+  path: "data/input.csv"
+
+transform:
+  rules: "basic_cleaning"
+
+load:
+  path: "data/output.csv"
