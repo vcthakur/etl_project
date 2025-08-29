@@ -20,6 +20,15 @@ EXTRACTORS = {
             "SQLALCHEMY_DATABASE_URI": config.SQLALCHEMY_DATABASE_URI,
             "query": "SELECT * FROM addresses"  # Example query
         }
+    },
+    "API": {
+        "module": "extractors.api_extractor",
+        "class": "APIExtractor",
+        "params": {
+            # Add required JSON params here
+            "url": "http://127.0.0.1:5001/api/orders",
+            "method": "GET"  # Example query
+        }
     }
 }
 
@@ -38,7 +47,7 @@ LOADERS = {
         "class": "CSVLoader",
         "params": {
             # Add required CSV loader params here
-             "path": "data/addrload.csv"  # Example path
+             "path": "data/order.csv"  # Example path
         }
     }
 }
