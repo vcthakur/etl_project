@@ -1,3 +1,6 @@
+python3.11 -m venv venv
+source venv/bin/activate
+
 # 1. Check current Python + SSL version inside venv
 python -c "import sys, ssl; print('Exec:', sys.executable); print('Python:', sys.version); print('OpenSSL:', ssl.OPENSSL_VERSION)"
 cat venv/pyvenv.cfg   # confirm venv home path (system vs brew python)
