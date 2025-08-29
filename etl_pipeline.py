@@ -1,10 +1,9 @@
-import warnings
-warnings.filterwarnings("ignore", category=UserWarning, module="urllib3")
-
-
 
 import importlib
 import pandas as pd
+from Config.config import config
+from Config import etl_config
+
 
 def load_class(module_path: str, class_name: str):
     """Dynamically import and return a class from a module."""
@@ -31,28 +30,9 @@ def run_etl(config: dict):
 if __name__ == "__main__":
     # Example pipeline config
     pipeline_config = {
-        "extractor": {
-            "module": "extractors.api_extractor",
-            "class": "APIExtractor",
-            "params": {
-                "url": "http://127.0.0.1:5001/api/orders",
-                "method": "GET"
-            }
-        },
-        "transformations": [
-            {
-                "module": "transformations.basic_cleaning",
-                "class": "BasicCleaning",
-                "params": {}
-            }
-        ],
-        "loader": {
-            "module": "loaders.csv_loader",
-            "class": "CSVLoader",
-            "params": {
-                "path": "data/output.csv"
-            }
-        }
+        "extractor": etl_config.get_extractor_config("CSV"),
+        "transformations": etl_config.get_transformations_config(),
+        "loader": etl_config.get_loader_config("SQL")
     }
 
     run_etl(pipeline_config)

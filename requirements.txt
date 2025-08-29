@@ -2,6 +2,6 @@ PyYAML
 pandas
 pytest
 requests
-
-
-
+dotenv
+sqlalchemy
+pyodbc
