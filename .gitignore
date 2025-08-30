@@ -2,3 +2,4 @@ Helpers/
 data/
 logs/
 __pycache__/
+venv/
