@@ -30,9 +30,9 @@ def run_etl(config: dict):
 if __name__ == "__main__":
     # Example pipeline config
     pipeline_config = {
-        "extractor": etl_config.get_extractor_config("API"),
+        "extractor": etl_config.get_extractor_config("CSV"),
         "transformations": etl_config.get_transformations_config(),
-        "loader": etl_config.get_loader_config("CSV")
+        "loader": etl_config.get_loader_config("SQL")
     }
 
     run_etl(pipeline_config)
